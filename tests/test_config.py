@@ -36,17 +36,16 @@ class TestCalculatorConfig:
     
     def test_config_initialization_default(self, temp_env_file):
         """Test config initialization with defaults."""
-
-    import os
-    # Clear the env var to test true defaults
-    os.environ.pop('HISTORY_FILE', None)
-    
-    config = CalculatorConfig(env_file=temp_env_file)
-    
-    assert config.get_history_file() == 'calculation_history.csv'
-    assert config.is_auto_save_enabled() is True
-    assert config.get_max_history() == 1000
-    assert config.get_decimal_places() == 2
+        import os
+        # Clear the env var to test true defaults
+        os.environ.pop('HISTORY_FILE', None)
+        
+        config = CalculatorConfig(env_file=temp_env_file)
+        
+        assert config.get_history_file() == 'calculation_history.csv'
+        assert config.is_auto_save_enabled() is True
+        assert config.get_max_history() == 1000
+        assert config.get_decimal_places() == 2
     
     def test_config_load_from_env_file(self, create_env_file):
         """Test loading config from .env file."""
